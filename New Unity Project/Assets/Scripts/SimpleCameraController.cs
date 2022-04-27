@@ -104,7 +104,7 @@ namespace UnityTemplateProjects
                 .With("Up", "<Keyboard>/pageUp")
                 .With("Down", "<Keyboard>/pageDown")
                 .With("Up", "<Keyboard>/e")
-                .With("Down", "<Keyboard>/q")
+                .With("Down", "<Keyboard>/q")[[
                 .With("Up", "<Gamepad>/rightshoulder")
                 .With("Down", "<Gamepad>/leftshoulder");
             boostFactorAction.AddBinding("<Gamepad>/Dpad").WithProcessor("scaleVector2(x=1, y=4)");
@@ -147,11 +147,11 @@ namespace UnityTemplateProjects
             {
                 direction += Vector3.right;
             }
-            if (Input.GetKey(KeyCode.Q))
+            if (Input.GetKey(KeyCode.LeftAlt))
             {
                 direction += Vector3.down;
             }
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.Space))
             {
                 direction += Vector3.up;
             }
