@@ -16,11 +16,15 @@ public class BetaController : MonoBehaviour
 
     bool isGrounded = true;
 
+    List<SkinnedMeshRenderer> meshRenderer = new List<SkinnedMeshRenderer>();
+
     // Start is called before the first frame update
     void Start()
     {
         animator = beta.GetComponent<Animator>();
         rb = beta.GetComponent<Rigidbody>();
+
+        beta.GetComponentsInChildren<SkinnedMeshRenderer>(meshRenderer);
     }
 
     // Update is called once per frame
@@ -44,7 +48,7 @@ public class BetaController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
 
 
 
@@ -80,5 +84,19 @@ public class BetaController : MonoBehaviour
     public void StopJump()
     {
         isJumping = false;
+    }
+
+    public void SetPastel(float pastelValue)
+    {
+        int id = Shader.PropertyToID("pastelness");
+
+        Debug.Log(meshRenderer.Count);
+
+        for (int i = 0; i < meshRenderer.Count; i++)
+        {
+            meshRenderer[i].material.SetFloat(id, pastelValue);
+
+            Debug.Log(meshRenderer[i].material.GetFloat(id) + " should be " + pastelValue);
+        }
     }
 }
